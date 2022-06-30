@@ -54,13 +54,13 @@ function loadscriptplayer(tab) {
 
 function setValues() {
   chrome.storage.sync.set({
-    // ancre: ".featured-articles",
+    //ancre: ".featured-articles",
     // ancre: ".content-start h2.text-lg, .m-auto h2.text-lg",
 
     ancre: document.querySelector("#ancre").value,
     position: document.querySelector("#position").value,
     tst: document.getElementById("theme").value,
-    titre: "Resources for developers"
+    titre: "Resources for developers",
     // titre: document.querySelector("h1").value
   });
 }
