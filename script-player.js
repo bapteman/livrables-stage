@@ -6,124 +6,154 @@ chrome.storage.sync.get("position", ({ position }) => {
           chrome.storage.sync.get("marge_bottom", ({ marge_bottom }) => {
             chrome.storage.sync.get("sombre", ({ sombre }) => {
               chrome.storage.sync.get("tst", ({ tst }) => {
-                alert(position + ancre + titre);
-                var sessionId = null;
-                var sessionIdEventDebug = undefined;
-                var collectionId = "uELp0anTnrqw";
-                var canonicalUrl = getCanonical();
-                var referer = window.location.origin;
-                var containers = {
-                  thin: { selector: `${ancre}`, position: `${position}` },
-                  //float: { selector: "main", position: "beforeend" },
-                };
-                var mainContainer =
-                  containers.thin || containers.sticky || containers.float;
-                function getCanonical() {
-                  var canonical = document.querySelector("[rel=canonical]");
-                  return (
-                    (canonical && canonical.href) ||
-                    window.location.origin + window.location.pathname
-                  );
-                }
+                chrome.storage.sync.get(
+                  "balise_sombre",
+                  ({ balise_sombre }) => {
+                    chrome.storage.sync.get(
+                      "unite_marge_bottom",
+                      ({ unite_marge_bottom }) => {
+                        chrome.storage.sync.get(
+                          "unite_marge_top",
+                          ({ unite_marge_top }) => {
+                            alert(unite_marge_bottom + " " + unite_marge_top);
+                            //alert(position + ancre + titre);
+                            if ((position, ancre)) {
+                              //alert("position, ancre");
+                              var sessionId = null;
+                              var sessionIdEventDebug = undefined;
+                              var collectionId = "uELp0anTnrqw";
+                              var canonicalUrl = getCanonical();
+                              var referer = window.location.origin;
+                              var containers = {
+                                thin: {
+                                  selector: `${ancre}`,
+                                  position: `${position}`,
+                                },
+                                //float: { selector: "main", position: "beforeend" },
+                              };
+                              var mainContainer =
+                                containers.thin ||
+                                containers.sticky ||
+                                containers.float;
+                              function getCanonical() {
+                                var canonical =
+                                  document.querySelector("[rel=canonical]");
+                                return (
+                                  (canonical && canonical.href) ||
+                                  window.location.origin +
+                                    window.location.pathname
+                                );
+                              }
 
-                function setupContainer() {
-                  var container = document.createElement("div");
-                  container.id = "audion-360-print-audio-player";
-                  container.dataset.id = collectionId;
-                  container.dataset.sessionId = sessionId;
-                  container.dataset.canonicalUrl = canonicalUrl;
-                  container.dataset.referer = referer;
-                  container.dataset.players = JSON.stringify({
-                    thin: "audion-360-print-audio-player-root-thin",
-                    //float: "audion-360-print-audio-player-root-float",
-                  });
-                  container.dataset.title = `${titre}`;
-                  container.dataset.lang = "fr-FR";
-                  container.dataset.dictionary =
-                    '{"listen_to_this_article":"Ecouter cet article","ad":"Annonce","your_content_after_this_ad":"Votre contenu après cette annonce","powered_by":"Powered by","wait":"/wait.fr.mp3"}';
-                  container.style.display = "none";
-                  var mainSelector = document.querySelector(
-                    mainContainer.selector
-                  );
-                  mainSelector.insertAdjacentElement(
-                    mainContainer.position,
-                    container
-                  );
-                }
-                function createPlayer() {
-                  var playerUrl = "https://dev-player.360.audion.fm/v3/latest";
-                  var container = document.querySelector(
-                    mainContainer.selector
-                  );
-                  var link = document.createElement("link");
-                  link.rel = "stylesheet";
-                  link.href = playerUrl + "/index.css";
-                  container.append(link);
+                              function setupContainer() {
+                                var container = document.createElement("div");
+                                container.id = "audion-360-print-audio-player";
+                                container.dataset.id = collectionId;
+                                container.dataset.sessionId = sessionId;
+                                container.dataset.canonicalUrl = canonicalUrl;
+                                container.dataset.referer = referer;
+                                container.dataset.players = JSON.stringify({
+                                  thin: "audion-360-print-audio-player-root-thin",
+                                  //float: "audion-360-print-audio-player-root-float",
+                                });
+                                container.dataset.title = `${titre}`;
+                                container.dataset.lang = "fr-FR";
+                                container.dataset.dictionary =
+                                  '{"listen_to_this_article":"Ecouter cet article","ad":"Annonce","your_content_after_this_ad":"Votre contenu après cette annonce","powered_by":"Powered by","wait":"/wait.fr.mp3"}';
+                                container.style.display = "none";
+                                var mainSelector = document.querySelector(
+                                  mainContainer.selector
+                                );
+                                mainSelector.insertAdjacentElement(
+                                  mainContainer.position,
+                                  container
+                                );
+                              }
+                              function createPlayer() {
+                                var playerUrl =
+                                  "https://dev-player.360.audion.fm/v3/latest";
+                                var container = document.querySelector(
+                                  mainContainer.selector
+                                );
+                                var link = document.createElement("link");
+                                link.rel = "stylesheet";
+                                link.href = playerUrl + "/index.css";
+                                container.append(link);
 
-                  var parser = new DOMParser();
-                  var doc = parser.parseFromString(
-                    getPlayerHTML(
-                      document.querySelector(`${titre}`).textContent
-                    ),
-                    "text/html"
-                  );
-                  var setupBody = doc.querySelector(
-                    "#audion-360-print-audio-player-setup"
-                  );
-                  if (setupBody && container) {
-                    container.append(setupBody);
-                    // var script = document.createElement("script");
-                    // script.src = "./index.js";
-                    // container.append(script);
-                  }
-                  var playerThinBody = doc.querySelector(
-                    "#audion-360-print-audio-player-body-thin"
-                  );
-                  var playerThinSelector = document.querySelector(
-                    containers.thin && containers.thin.selector
-                  );
-                  if (playerThinBody && playerThinSelector) {
-                    playerThinSelector.insertAdjacentElement(
-                      containers.thin.position,
-                      playerThinBody
+                                var parser = new DOMParser();
+                                var doc = parser.parseFromString(
+                                  getPlayerHTML(
+                                    document.querySelector(`${titre}`)
+                                      .textContent
+                                  ),
+                                  "text/html"
+                                );
+                                var setupBody = doc.querySelector(
+                                  "#audion-360-print-audio-player-setup"
+                                );
+                                if (setupBody && container) {
+                                  container.append(setupBody);
+                                  // var script = document.createElement("script");
+                                  // script.src = "./index.js";
+                                  // container.append(script);
+                                }
+                                var playerThinBody = doc.querySelector(
+                                  "#audion-360-print-audio-player-body-thin"
+                                );
+                                var playerThinSelector = document.querySelector(
+                                  containers.thin && containers.thin.selector
+                                );
+                                if (playerThinBody && playerThinSelector) {
+                                  playerThinSelector.insertAdjacentElement(
+                                    containers.thin.position,
+                                    playerThinBody
+                                  );
+                                }
+                                const btnPlays = Array.from(
+                                  document.getElementsByClassName(
+                                    "audion-360-print-audio-player-btn"
+                                  )
+                                );
+                                const playerAudio = document.getElementById(
+                                  "audion-360-print-audio-player-audio"
+                                );
+                                btnPlays.forEach((btn) =>
+                                  btn.addEventListener("click", () => {
+                                    playerAudio.play();
+                                    playerAudio.autoplay = true;
+                                  })
+                                );
+                              }
+                              function setupPlayer() {
+                                setupContainer();
+                                createPlayer();
+                              }
+                              setupPlayer();
+                            }
+                            if (couleur) {
+                              setupCouleur(couleur);
+                            }
+                            if (marge_top) {
+                              setupMargetop(marge_top, unite_marge_top);
+                            }
+                            if (marge_bottom) {
+                              setupMargebottom(
+                                marge_bottom,
+                                unite_marge_bottom
+                              );
+                            }
+                            if (tst) {
+                              setupTheme(tst);
+                            }
+                            if (sombre) {
+                              setupSombre(balise_sombre);
+                            }
+                          }
+                        );
+                      }
                     );
                   }
-                  const btnPlays = Array.from(
-                    document.getElementsByClassName(
-                      "audion-360-print-audio-player-btn"
-                    )
-                  );
-                  const playerAudio = document.getElementById(
-                    "audion-360-print-audio-player-audio"
-                  );
-                  btnPlays.forEach((btn) =>
-                    btn.addEventListener("click", () => {
-                      playerAudio.play();
-                      playerAudio.autoplay = true;
-                    })
-                  );
-                }
-                function setupPlayer() {
-                  setupContainer();
-                  createPlayer();
-                }
-                setupPlayer();
-                if (couleur) {
-                  setupCouleur(couleur);
-                }
-                if (marge_top) {
-                  setupMargetop(marge_top);
-                }
-                if (marge_bottom) {
-                  setupMargebottom(marge_bottom);
-                }
-                if (tst) {
-                  setupTheme(tst);
-                }
-                alert("sombre");
-                if (sombre) {
-                  setupSombre();
-                }
+                );
               });
             });
           });
@@ -205,17 +235,17 @@ function setupCouleur(couleur) {
   );
 }
 
-function setupMargetop(marge_top) {
+function setupMargetop(marge_top, unite_marge_top) {
   document.head.insertAdjacentHTML(
     "beforeend",
-    `<style> #audion-360-print-audio-player-body-thin{margin-top :${marge_top};}`
+    `<style> #audion-360-print-audio-player-body-thin{margin-top :${marge_top}${unite_marge_top} !important;}`
   );
 }
 
-function setupMargebottom(marge_bottom) {
+function setupMargebottom(marge_bottom, unite_marge_bottom) {
   document.head.insertAdjacentHTML(
     "beforeend",
-    `<style> #audion-360-print-audio-player-body-thin{margin-bottom : ${marge_bottom}}`
+    `<style> #audion-360-print-audio-player-body-thin{margin-bottom : ${marge_bottom}${unite_marge_bottom} !important}`
   );
 }
 
@@ -223,9 +253,17 @@ function setupTheme(tst) {
   document.head.insertAdjacentHTML("beforeend", `<style> ${tst} </style> `);
 }
 
-function setupSombre() {
-  document.head.insertAdjacentHTML(
-    "beforeend",
-    `<style>.audion-360-print-audio-player-titleText{color : white !important;}.audion-360-print-audio-player-time{color : white !important;}.audion-360-print-audio-player-poweredBy{color : white !important;}</style>`
-  );
+function setupSombre(balise_sombre) {
+  alert(balise_sombre);
+  if (balise_sombre) {
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      `<style>${balise_sombre} .audion-360-print-audio-player-titleText{color : white !important;}${balise_sombre} .audion-360-print-audio-player-time{color : white !important;}${balise_sombre} .audion-360-print-audio-player-poweredBy{color : white !important;}</style>`
+    );
+  } else {
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      `<style>.audion-360-print-audio-player-titleText{color : white !important;}.audion-360-print-audio-player-time{color : white !important;}.audion-360-print-audio-player-poweredBy{color : white !important;}</style>`
+    );
+  }
 }

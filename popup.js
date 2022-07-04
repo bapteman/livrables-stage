@@ -64,6 +64,7 @@ function loadscriptplayer(tab) {
     target: { tabId: tab.id },
     files: ["script-player.js"],
   });
+  document.getElementsByClassName("theme-player").style.visibility = "visible";
   //alert("fonction finie");
   //document.querySelector(".audion-360-print-audio-player-tag").textContent =
   // "Ecouter cet article";
@@ -80,8 +81,11 @@ function setValues() {
     titre: document.querySelector("#titre").value,
     couleur: document.querySelector("#couleur").value,
     marge_top: document.querySelector("#marge-top").value,
+    unite_marge_top: document.querySelector("#marge-top-unite").value,
     marge_bottom: document.querySelector("#marge-bottom").value,
+    unite_marge_bottom: document.querySelector("#marge-bottom-unite").value,
     sombre: document.querySelector("#theme_sombre").value,
+    balise_sombre: document.querySelector("#balise-sombre").value,
   });
 }
 
