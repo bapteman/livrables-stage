@@ -5,28 +5,81 @@
   </head>
   <body>
     <form action="" method="get" class="form-player-integration">
-      <div class="form-player-integration">
-        <label for="ancre">Selecteur Balise pour le player </label>
-        <input type="text" name="ancre" id="ancre" required>
+      <div class="creation_player" id="creation-player">
+        <div id="ancre/titre">
+        <div class="form-player-integration ancre">
+          <label for="ancre">Selecteur Balise pour le player </label>
+          <input type="text" name="ancre" id="ancre">
+        </div>
+        <div class="form-player-integration titre">
+          <div class="titre-button">
+          <label for="titre">Selecteur Balise pour le titre </label>
+          <input type="text" name="titre" id="titre">
+          </div>
+        </div>
+        </div>
+        <div class="form-player-integration position">
+          <label for="position">position du player</label>
+          <div class="position-button">
+          <select name = "position", id = "position">          
+            <option value="beforebegin">beforebegin</option>
+            <option value="afterbegin">afterbegin</option>
+            <option value="beforeend">beforeend</option>
+            <option value="afterend">afterend</option>
+          </select>
+          </div>
+        </div>
+      </div>
+      <div class="theme-player" id="theme-player">
+      <div class="form-player-integration couleur">
+        <label for="couleur">couleur </label>
+        <input type="text" name="couleur" id="couleur" >
+      </div>
+      <div class="form-player-integration marge-bottom">
+        <div>
+          <label for="marge-bottom">marge-bottom </label>
+          <input type="text" name="marge-bottom" id="marge-bottom" >
+        </div>
+        <div>
+          <label for="marge-bottom-unite">marge-bottom-unite </label>
+          <select  name="marge-bottom-unite" id="marge-bottom-unite" >
+            <option value="px">px</option>
+            <option value="em">em</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-player-integration marge-top">
+        <div>
+          <label for="marge-top">marge-top </label>
+          <input type="text" name="marge-top" id="marge-top" >
+        </div>
+        <div>
+          <label for="marge-top-unite">marge-top unite</label>
+          <select name="marge-top-unite" id="marge-top-unite" >
+            <option value="px">px</option>
+            <option value="em">em</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-player-integration theme_sombre">
+        <div>
+          <label for="theme_sombre">theme sombre</label>
+          <select name = "theme_sombre", id = "theme_sombre">          
+            <option value="">non</option>
+            <option value="true">oui</option>
+          </select>
+        </div>
+        <div>
+          <label for="balise_sombre">balise theme sombre</label>
+          <input type="text" name="balise-sombre" id="balise-sombre">
+        </div>
       </div>
       <div class="form-player-integration">
-        <label for="titre">Selecteur Balise pour le titre </label>
-        <input type="text" name="titre" id="titre" required>
-      </div>
-      <div class="form-player-integration">
-        <label for="position">position du player par rapport a la balise</label>
-        <select name = "position", id = "position" required>          
-          <option value="beforebegin">beforebegin</option>
-          <option value="afterbegin">afterbegin</option>
-          <option value="beforeend">beforeend</option>
-          <option value="afterend">afterend</option>
-        </select>
-      </div>
-      <div class="form-player-integration">
-        <label for="theme">Theme </label>
+        <label for="theme">CSS specifique a rajouter </label>
         <textarea id="theme"></textarea>
       </div> 
-    </form>
+    </div> 
+      </form>
     <div id="buttonDiv">
     </div>
     <script src="popup.js"></script>
