@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <form action="" method="get" class="form-player-integration">
+      <div class="creation_player" id="creation-player">
+        <div id="ancre/titre">
+        <div class="form-player-integration ancre">
+          <label for="ancre">Selector for the player</label>
+          <input type="text" name="ancre" id="ancre">
+        </div>
+        <div class="form-player-integration titre">
+          <div class="titre-button">
+          <label for="titre">Selector for the title</label>
+          <input type="text" name="titre" id="titre">
+          </div>
+        </div>
+        </div>
+        <div class="form-player-integration position">
+          <label for="position">Player position</label>
+          <div class="position-button">
+          <select name = "position", id = "position">          
+            <option value="beforebegin">beforebegin</option>
+            <option value="afterbegin">afterbegin</option>
+            <option value="beforeend">beforeend</option>
+            <option value="afterend">afterend</option>
+          </select>
+          </div>
+        </div>
+      </div>
+      <div class="theme-player" id="theme-player">
+      <div class="form-player-integration couleur">
+        <label for="couleur">Color</label>
+        <input type="text" name="couleur" id="couleur" >
+      </div>
+      <div class="form-player-integration marge-bottom">
+        <div>
+          <label for="marge-bottom">Margin-bottom </label>
+          <input type="text" name="marge-bottom" id="marge-bottom" >
+        </div>
+        <div>
+          <label for="marge-bottom-unite">Margin-bottom unit</label>
+          <select  name="marge-bottom-unite" id="marge-bottom-unite" >
+            <option value="px">px</option>
+            <option value="em">em</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-player-integration marge-top">
+        <div>
+          <label for="marge-top">Margin-top</label>
+          <input type="text" name="marge-top" id="marge-top" >
+        </div>
+        <div>
+          <label for="marge-top-unite">Margin-top unit</label>
+          <select name="marge-top-unite" id="marge-top-unite" >
+            <option value="px">px</option>
+            <option value="em">em</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-player-integration theme_sombre">
+        <div>
+          <label for="theme_sombre">Dark theme</label>
+          <select name = "theme_sombre", id = "theme_sombre">          
+            <option value="">no</option>
+            <option value="true">yes</option>
+          </select>
+        </div>
+        <div>
+          <label for="balise_sombre">Selector for dark theme</label>
+          <input type="text" name="balise-sombre" id="balise-sombre">
+        </div>
+      </div>
+      <div class="form-player-integration">
+        <label for="theme">Specific css to add</label>
+        <textarea id="theme"></textarea>
+      </div> 
+    </div> 
+      </form>
+    <div id="buttonDiv">
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

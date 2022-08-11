@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="popup.css"> 
+  </head>
+  <body>
+    <p>Fill in with corresponding selectors</p>
+    <form action="" method="get" class="form-player-scraping">
+      <div class="form-player-scraping">
+        <label for="root">Root</label>
+        <input type="text" name="root" id="root" required>
+      </div>
+      <div class="form-player-scraping">
+        <label for="titre">Title</label>
+        <input type="text" name="titre" id="titre">
+      </div>
+      <div class="form-player-scraping">  
+      <div class="form-player-scraping">
+        <label for="intro">Intro</label>
+        <input type="text" name="intro" id="intro"></input>
+      </div> 
+      <div class="form-player-scraping">
+        <label for="sous-titres">Subtitles</label>
+        <input type="text" name="sous-titres" id="sous-titres">
+      </div>
+      <div class="form-player-scraping">
+        <label for="paragraphes">paragraphs</label>
+        <input type="text" name="paragraphes" id="paragraphes">
+      </div>
+      <!-- <div class="form-player-scraping"> 
+          <label for="exclusion">regles d'exclusion</label>
+          <textarea id="exclusion"></textarea>
+        </div>  -->
+        <div class="form-player-scraping">
+          <input type="text" name="test" id="test" style="opacity: 0;" required>
+          <!-- cette balise sert à stopper l'execution du code lors de l'affichage du texte car aller au bout du code refresh la popup et donc fait disparaître la boite -->
+        </div> 
+    </form>
+    <div id="buttonDiv">
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
