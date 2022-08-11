@@ -8,7 +8,7 @@ You can find the readme of this extension [here](https://github.com/bapteman/liv
 
 ### Extension for scraping configuration
 
-you can find the readme of this extension [here](https://github.com/audi-on/printaudio-integration-extensions/blob/master/print-audio-extensions/extension_player-integration/README.md)
+you can find the readme of this extension [here](https://github.com/bapteman/livrables-stage/tree/master/print-audio-extensions/extension_scraping#readme)
 
 ## 1. how to import an extension into Google Chrome
 
