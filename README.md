@@ -3,7 +3,7 @@
 ## Links to the readme of the extensions
 ### Extension for player integration
 
-You can find the readme of this extension [here](https://github.com/audi-on/printaudio-integration-extensions/blob/master/print-audio-extensions/extension_scraping/README.md)
+You can find the readme of this extension [here](https://github.com/bapteman/livrables-stage/tree/master/print-audio-extensions/extension_player-integration#readme)
 
 
 ### Extension for scraping configuration
